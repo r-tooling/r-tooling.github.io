@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r4r - Make Your Research Reproducible</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">r4r</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="docs.html">Docks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contactus">Contact us</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="hero-title">
+                        Make Your <!--<span class="switching-text" id="switchingText">Research</span>--> Research <span class="highlight">Reproducible</span> with r4r
+                    </h1>
+                    <p class="hero-subtitle">
+                        Automatically build minimal, self-contained environments from your R notebooks. 
+                        No manual Docker setup. No lost dependencies. Just science that runs anywhere.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fab fa-r-project me-2"></i>
+                            Try r4r for Free
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-info-circle me-2"></i>
+                            How It Works
+                        </button>
+                    </div>
+                    
+                    <!-- Trust indicators -->
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i class="fas fa-users"></i>
+                            <span>Trusted by researchers at CTU, Prague</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-star"></i>
+                            <span>Open source & free</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure & private</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Code Window -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-10 col-xl-9">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <div class="window-dot red"></div>
+                                <div class="window-dot yellow"></div>
+                                <div class="window-dot green"></div>
+                            </div>
+                            <div class="file-tab">
+                                <i class="fas fa-file-code"></i>
+                                <span>analysis.R</span>
+                                <span class="close-tab">×</span>
+                            </div>
+                        </div>
+                        <div class="toolbar">
+                            <button class="toolbar-btn"><i class="fas fa-save"></i></button>
+                            <div class="separator"></div>
+                            <button class="toolbar-btn active">Source</button>
+                            <button class="toolbar-btn">Visual</button>
+                            <div class="separator"></div>
+                            <button class="toolbar-btn"><i class="fas fa-play"></i> Run</button>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-line"><span class="line-num">1</span><span class="comment"># Install r4r package</span></div>
+                            <div class="code-line"><span class="line-num">2</span><span class="function">install.packages</span>(<span class="string">"r4r"</span>)</div>
+                            <div class="code-line"><span class="line-num">3</span><span class="keyword">library</span>(<span class="string">r4r</span>)</div>
+                            <div class="code-line"><span class="line-num">4</span>&nbsp;</div>
+                            <div class="code-line"><span class="line-num">5</span><span class="comment"># Automatically capture environment</span></div>
+                            <div class="code-line"><span class="line-num">6</span><span class="function">r4r_capture</span>(<span class="string">"my_analysis.Rmd"</span>)</div>
+                            <div class="code-line"><span class="line-num">7</span>&nbsp;</div>
+                            <div class="code-line"><span class="line-num">8</span><span class="comment"># Generate reproducible container</span></div>
+                            <div class="code-line"><span class="line-num">9</span><span class="function">r4r_build</span>(<span class="string">"my_analysis"</span>)</div>
+                            
+                            <div class="success-message">
+                                <i class="fas fa-check me-2"></i>
+                                Environment captured successfully!
+                            </div>
+                            <div class="info-message">
+                                <i class="fas fa-rocket me-2"></i>
+                                Ready to share and reproduce
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet r4r Section -->
+    <section class="meet-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Meet r4r: Effortless Reproducibility for R Workflows</h2>
+                    <p class="section-description">
+                        r4r automatically traces your notebook's execution and builds a lightweight Docker image with everything it needs—packages, system libs, data paths, and more.<br>
+                        No manual configuration. No bloated environments. Just seamless, portable reproducibility.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </span>
+                            <span class="feature-text"><strong>Captures all runtime dependencies</strong>—R packages, system libs, data sources</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fab fa-docker"></i>
+                            </span>
+                            <span class="feature-text"><strong>Outputs minimal Docker images</strong> ready to run anywhere</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-flask"></i>
+                            </span>
+                            <span class="feature-text"><strong>Validated on real-world notebooks</strong> from Kaggle with 97.5% success</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">
+                                <i class="fas fa-seedling"></i>
+                            </span>
+                            <span class="feature-text"><strong>Free for personal use</strong> – paid support for professionals available soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title">Reproducibility Is a System-Level Problem</h2>
+            <div class="section-content">
+                <p>
+                    Computational notebooks have become central to data-driven research. But sharing and re-executing them often breaks due to hidden dependencies: R packages, system libraries, compiler toolchains, data paths. Even minor version mismatches or undocumented system requirements can derail reproducibility.
+                </p>
+                <p>
+                    Manually collecting environment details, building Dockerfiles, or relying on package metadata is error-prone and incomplete. And tools that only capture language-level dependencies fall short when notebooks rely on native code or external resources.
+                </p>
+            </div>
+
+            <!--
+             Statistics Cards
+            <div class="row mt-5 justify-content-center g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">74%</div>
+                        <div class="stat-label">of the code did not successfully complete execution, in a study of 2000 replication datasets with code in R</div>
+                        <div class="stat-source">r4r paper</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">4.2 hrs</div>
+                        <div class="stat-label">average time spent debugging environment issues</div>
+                        <div class="stat-source">Developer survey, 2024</div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-number">89%</div>
+                        <div class="stat-label">of researchers struggle with dependency management</div>
+                        <div class="stat-source">Academic Computing Report</div>
+                    </div>
+                </div>
+            </div>
+            -->
+            
+            <!-- Pain Points vs Solutions -->
+            <div class="row mt-5 g-5">
+                <div class="col-lg-6">
+                    <h3 class="subsection-title">Common Pain Points</h3>
+                    <div class="points-list">
+                        <div class="point-item pain">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <h4>Version Conflicts</h4>
+                                <p>Package versions that worked yesterday suddenly break today</p>
+                            </div>
+                        </div>
+                        <div class="point-item pain">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <div>
+                                <h4>Hidden Dependencies</h4>
+                                <p>System libraries and tools not captured in package manifests</p>
+                            </div>
+                        </div>
+                        <div class="point-item pain">
+                            <i class="fas fa-laptop-code"></i>
+                            <div>
+                                <h4>Environment Drift</h4>
+                                <p>Development and production environments slowly diverge</p>
+                            </div>
+                        </div>
+                        <div class="point-item pain">
+                            <i class="fas fa-share-alt"></i>
+                            <div>
+                                <h4>Sharing Complexity</h4>
+                                <p>Manual Docker setup requires specialized DevOps knowledge</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="subsection-title">Why r4r Works</h3>
+                    <div class="points-list">
+                        <div class="point-item solution">
+                            <i class="fas fa-magic"></i>
+                            <div>
+                                <h4>Automatic Detection</h4>
+                                <p>Discovers all dependencies, including system-level requirements</p>
+                            </div>
+                        </div>
+                        <div class="point-item solution">
+                            <i class="fas fa-cube"></i>
+                            <div>
+                                <h4>Minimal Containers</h4>
+                                <p>Generates lightweight, optimized Docker images automatically</p>
+                            </div>
+                        </div>
+                        <div class="point-item solution">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Version Locking</h4>
+                                <p>Captures exact versions to prevent future conflicts</p>
+                            </div>
+                        </div>
+                        <div class="point-item solution">
+                            <i class="fas fa-rocket"></i>
+                            <div>
+                                <h4>One-Click Sharing</h4>
+                                <p>Share reproducible environments without Docker expertise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h2 class="section-title">How Does It Work?</h2>
+                </div>
+            </div>
+            
+            <div class="row mt-5 align-items-start">
+                <!-- Visual Area -->
+                <div class="col-lg-7">
+                    <div class="visual-container">
+                        <!-- Default Visual -->
+                        <div class="visual-slide active" id="default-visual">
+                            <div class="workflow-panel">
+                                <div class="panel-header">
+                                    <i class="fab fa-r-project"></i>
+                                    <h3>r4r Workflow Overview</h3>
+                                </div>
+                                <div class="workflow-description">
+                                    <p>Hover over the steps to see each phase of the r4r process in detail</p>
+                                </div>
+                                <div class="workflow-flow">
+                                    <div class="workflow-step">
+                                        <div class="workflow-emoji">📊</div>
+                                        <div class="workflow-label">Notebook</div>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-emoji">🔍</div>
+                                        <div class="workflow-label">Trace</div>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-emoji">📦</div>
+                                        <div class="workflow-label">Dependencies</div>
+                                    </div>
+                                    <div class="workflow-arrow">→</div>
+                                    <div class="workflow-step">
+                                        <div class="workflow-emoji">🐳</div>
+                                        <div class="workflow-label">Docker</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step Visuals - in progress 
+                        <div class="visual-slide" id="step1-visual">
+                            <div class="terminal-panel">
+                                <div class="panel-header">
+                                    <i class="fas fa-terminal"></i>
+                                    <h3>r4r System Tracer</h3>
+                                </div>
+                                <div class="terminal-content">
+                                    <div class="terminal-line command">$ r4r trace analysis.R</div>
+                                    <div class="terminal-line output">→ Monitoring system calls...</div>
+                                    <div class="terminal-line output">→ open(/usr/lib/R/library/base/R/base)</div>
+                                    <div class="terminal-line output">→ read(data/input.csv, 245KB)</div>
+                                    <div class="terminal-line output">→ dlopen(ggplot2.so)</div>
+                                    <div class="terminal-line output">→ write(results/plot.png, 128KB)</div>
+                                    <div class="terminal-line success">✓ Trace completed: 47 files accessed</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-slide" id="step2-visual">
+                            <div class="dependency-panel">
+                                <div class="panel-header">
+                                    <i class="fas fa-sitemap"></i>
+                                    <h3>Dependency Analysis</h3>
+                                </div>
+                                <div class="dependency-sections">
+                                    <div class="dep-section">
+                                        <div class="dep-title">
+                                            <i class="fab fa-r-project"></i>
+                                            <span>R Packages (3)</span>
+                                        </div>
+                                        <div class="dep-items">
+                                            <div class="dep-item">ggplot2 v3.4.0</div>
+                                            <div class="dep-item">dplyr v1.1.0</div>
+                                            <div class="dep-item">readr v2.1.3</div>
+                                        </div>
+                                    </div>
+                                    <div class="dep-section">
+                                        <div class="dep-title">
+                                            <i class="fas fa-cogs"></i>
+                                            <span>System Libraries (2)</span>
+                                        </div>
+                                        <div class="dep-items">
+                                            <div class="dep-item">libssl.so.1.1</div>
+                                            <div class="dep-item">libcurl.so.4</div>
+                                        </div>
+                                    </div>
+                                    <div class="dep-section">
+                                        <div class="dep-title">
+                                            <i class="fas fa-folder"></i>
+                                            <span>Data Files (1)</span>
+                                        </div>
+                                        <div class="dep-items">
+                                            <div class="dep-item">data/input.csv</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visual-slide" id="step3-visual">
+                            <div class="docker-panel">
+                                <div class="panel-header">
+                                    <i class="fab fa-docker"></i>
+                                    <h3>Docker Image Build</h3>
+                                </div>
+                                <div class="build-steps">
+                                    <div class="build-step">
+                                        <span class="step-num">1/6</span>
+                                        <span class="step-cmd">FROM r-base:4.3.0</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                    <div class="build-step">
+                                        <span class="step-num">2/6</span>
+                                        <span class="step-cmd">COPY requirements.txt .</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                    <div class="build-step">
+                                        <span class="step-num">3/6</span>
+                                        <span class="step-cmd">RUN install.packages(...)</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                    <div class="build-step">
+                                        <span class="step-num">4/6</span>
+                                        <span class="step-cmd">COPY analysis.R data/</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                    <div class="build-step">
+                                        <span class="step-num">5/6</span>
+                                        <span class="step-cmd">RUN R CMD check</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                    <div class="build-step">
+                                        <span class="step-num">6/6</span>
+                                        <span class="step-cmd">CMD ["Rscript", "analysis.R"]</span>
+                                        <span class="step-status">✓</span>
+                                    </div>
+                                </div>
+                                <div class="build-result">
+                                    <div class="result-success">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Image built successfully: r4r-analysis:latest</span>
+                                    </div>
+                                    <div class="result-info">Size: 245MB (70% smaller than manual build)</div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- Steps List -->
+                <div class="col-lg-5">
+                    <div class="steps-list">
+                        <div class="step-item" data-step="1">
+                            <div class="step-number">01</div>
+                            <div class="step-text">
+                                <h4>Trace Execution</h4>
+                                <p>r4r observes program behavior during execution using low-level system instrumentation. All accessed files, system calls, and loaded packages are recorded.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item" data-step="2">
+                            <div class="step-number">02</div>
+                            <div class="step-text">
+                                <h4>Extract Dependencies</h4>
+                                <p>The tool identifies language-level and system-level requirements—R packages, native libraries, external binaries, data sources, and more.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item" data-step="3">
+                            <div class="step-number">03</div>
+                            <div class="step-text">
+                                <h4>Construct Minimal Image</h4>
+                                <p>A Docker image is assembled with only the essential components needed to faithfully re-execute the notebook. The environment is isolated, transferable, and validated via output diffing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evaluation Section -->
+    <section class="evaluation-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h2 class="section-title">Evaluated on Real-World R Workflows</h2>
+                    <p class="section-content">
+                        We evaluated r4r on a corpus of R Markdown notebooks from Kaggle. The tool successfully reproduced <span class="highlight">97.5% of deterministic executions</span>, demonstrating its practical viability for capturing complete environments with minimal user intervention.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="evaluation-stats">
+                <div class="evaluation-stat">
+                    <div class="stat-number">97.5%</div>
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-source">Kaggle R notebooks</div>
+                </div>
+                <div class="evaluation-stat">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Notebooks Tested</div>
+                    <div class="stat-source">Real-world workflows</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row mt-4 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="action-buttons">
+                        <button class="btn btn-primary me-3">
+                            <i class="fas fa-file-alt me-2"></i>
+                            Read More in Our Technical Report
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-box me-2"></i>
+                            View a Sample Reproducible Artifact
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-background-animation"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="cta-badge">
+                        <i class="fas fa-rocket"></i>
+                        <span>Ready to Transform Your Research?</span>
+                    </div>
+                    <h2 class="cta-title">Start Building <span class="cta-highlight">Trustworthy</span> Environments</h2>
+                    <p class="cta-description">
+                        Reproducibility shouldn't be a manual process. With r4r, it's automated, auditable, and portable.
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary btn-glow">
+                            <i class="fab fa-r-project me-2"></i>
+                            <span>Try r4r for Free</span>
+                            <div class="btn-shine"></div>
+                        </button>
+                        <button class="btn btn-outline btn-glass">
+                            <i class="fas fa-envelope me-2"></i>
+                            Get in Touch for Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-element element-1">
+            <i class="fab fa-docker"></i>
+        </div>
+        <div class="floating-element element-2">
+            <i class="fab fa-r-project"></i>
+        </div>
+        <div class="floating-element element-3">
+            <i class="fas fa-cube"></i>
+        </div>
+        <div class="floating-element element-4">
+            <i class="fas fa-code-branch"></i>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Choose Your Plan</h2>
+                    <p class="section-description">
+                        Start for free and upgrade when you need professional support
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5">
+                <!-- Free Plan -->
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="pricing-card free-plan">
+                        <div class="plan-header">
+                            <div class="plan-badge">Free</div>
+                            <h3 class="plan-title">r4r Community</h3>
+                            <div class="plan-price">
+                                <span class="price">$0</span>
+                                <span class="period">forever</span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Unlimited notebook captures</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Docker image generation</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Basic dependency detection</span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-cta">
+                            <button class="btn btn-outline-plan">
+                                <i class="fab fa-github me-2"></i>
+                                Get Started for Free
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paid Plan -->
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="pricing-card paid-plan">
+                        <div class="plan-header">
+                            <div class="plan-badge">Professional</div>
+                            <h3 class="plan-title">r4r Professional</h3>
+                            <div class="plan-price">
+                                <span class="price">coming soon</span>
+                                <span class="period"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Everything in Community</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Priority technical support</span>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-cta">
+                            <button class="btn btn-primary-plan">
+                                <i class="fas fa-envelope me-2"></i>
+                                Contact Us
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom CTA -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8 text-center">
+                    <div class="pricing-bottom">
+                        <h4>Need a custom solution?</h4>
+                        <p>We offer tailored packages for universities, research institutions, and large organizations.</p>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-comments me-2"></i>
+                            Let's Talk
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <h4 class="footer-logo">r4r</h4>
+                        <p class="footer-description">
+                            Making R research reproducible through automated dependency capture and minimal Docker containerization.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation Column -->
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <div class="footer-links">
+                        <h5 class="footer-title">Documentation</h5>
+                        <ul class="footer-nav">
+                            <li><a href="docs.html">Overview</a></li>
+                            <li><a href="tutorial.html">Tutorial</a></li>
+                            <li><a href="reference.html">Reference</a></li>
+                            <li><a href="examples.html">Examples</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Research Column -->
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <div class="footer-links">
+                        <h5 class="footer-title">Research</h5>
+                        <ul class="footer-nav">
+                            <li><a href="publications.html">Publications</a></li>
+                            <li><a href="#evaluation">Evaluation</a></li>
+                            <li><a href="#">Technical Report</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Support Column -->
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <div class="footer-links">
+                        <h5 class="footer-title">Support</h5>
+                        <ul class="footer-nav">
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#">Issue Tracker</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Organization Column -->
+                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                    <div class="footer-links">
+                        <h5 class="footer-title">Organization</h5>
+                        <ul class="footer-nav">
+                            <li><a href="#">CTU Prague</a></li>
+                            <li><a href="#">About Team</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="footer-copyright">
+                            © 2025 r4r Project. Made with <i class="fas fa-heart text-danger"></i> for reproducible research.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-badges">
+                            <span class="badge-item">
+                                <i class="fas fa-code"></i>
+                                Open Source
+                            </span>
+                            <span class="badge-item">
+                                <i class="fas fa-university"></i>
+                                Academic
+                            </span>
+                            <span class="badge-item">
+                                <i class="fas fa-flask"></i>
+                                Research
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Interactive How It Works Section
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepItems = document.querySelectorAll('.step-item');
+            const visualSlides = document.querySelectorAll('.visual-slide');
+            
+            function showStep(stepNumber) {
+                // Hide all visuals and show selected one
+                visualSlides.forEach(slide => slide.classList.remove('active'));
+                document.getElementById(`step${stepNumber}-visual`).classList.add('active');
+                
+                // Update active step
+                stepItems.forEach(item => item.classList.remove('active'));
+                document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+            }
+            
+            function showDefault() {
+                // Show default visual and remove active states
+                visualSlides.forEach(slide => slide.classList.remove('active'));
+                document.getElementById('default-visual').classList.add('active');
+                stepItems.forEach(item => item.classList.remove('active'));
+            }
+            
+            // Add hover events to steps
+            stepItems.forEach(item => {
+                const stepNumber = item.getAttribute('data-step');
+                item.addEventListener('mouseenter', () => showStep(stepNumber));
+                item.addEventListener('mouseleave', showDefault);
+            });
+
+            /* Switching text - in progress
+            // Text switching animation - slides from up going down
+            const switchingText = document.getElementById('switchingText');
+            const words = ['Research', 'R Code'];
+            let currentIndex = 0;
+
+            function switchText() {
+                // Slide out (down)
+                switchingText.classList.add('slide-out');
+                
+                setTimeout(() => {
+                    // Change text
+                    currentIndex = (currentIndex + 1) % words.length;
+                    switchingText.textContent = words[currentIndex];
+                    
+                    // Slide in (from up)
+                    switchingText.classList.remove('slide-out');
+                    switchingText.classList.add('slide-in');
+                }, 400);
+
+                setTimeout(() => {
+                    switchingText.classList.remove('slide-in');
+                }, 800);
+            }
+
+            // Start the animation after 2 seconds, then repeat every 3 seconds
+            setTimeout(() => {
+                switchText();
+                setInterval(switchText, 3000);
+            }, 2000);
+            */
+        });
+    </script>
+</body>
+</html>
