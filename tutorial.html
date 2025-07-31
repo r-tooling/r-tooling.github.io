@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>r4r - Tutorial</title>
+    <title>R4R - Tutorial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">r4r</a>
+            <a class="navbar-brand" href="index.html">R tooling</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -90,13 +90,42 @@
                         Learn how to use R4R through our comprehensive video tutorial and step-by-step text guide below.
                     </p>
                     
-                    <p>
-                        Text
-                    </p>
+                    <p>                    </p>
                     
-                    <p>
-                        Text
-                    </p>
+                    <p>                    </p>
+
+                    <!-- Coming Soon Notice -->
+                    <div class="coming-soon-notice">
+                        <div class="notice-content">
+                            <i class="fas fa-clock notice-icon"></i>
+                            <div>
+                                <h4>Step-by-Step Text Tutorial Coming Soon</h4>
+                                <p>We're working on a comprehensive written tutorial to complement our video demo. Check back soon for detailed instructions and examples.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Demo Section -->
+                <div class="video-demo-section">
+                    <h2 class="video-title">R4R Plugin Demo</h2>
+                    
+                    <div class="video-container">
+                        <video 
+                            class="demo-video" 
+                            controls 
+                            preload="metadata">
+                            <source src="assets/r4r demo.webm" type="video/webm">
+                            <div class="video-fallback">
+                                <i class="fas fa-play-circle"></i>
+                                <p>Your browser doesn't support HTML5 video. You can <a href="assets/r4r demo.webm" download>download the video</a> instead.</p>
+                            </div>
+                        </video>
+                    </div>
+                    
+                    <div class="video-description">
+                        <p>                        </p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -108,10 +137,24 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Search functionality (basic)
             const searchInput = document.querySelector('.search-input');
-            searchInput.addEventListener('input', function() {
-                // Add search functionality here
-                console.log('Searching for:', this.value);
-            });
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    // Add search functionality here
+                    console.log('Searching for:', this.value);
+                });
+            }
+
+            // Video interaction tracking
+            const video = document.querySelector('.demo-video');
+            if (video) {
+                video.addEventListener('play', function() {
+                    console.log('Video started playing');
+                });
+                
+                video.addEventListener('ended', function() {
+                    console.log('Video finished playing');
+                });
+            }
         });
     </script>
 </body>

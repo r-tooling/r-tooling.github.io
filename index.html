@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>r4r - Make Your Research Reproducible</title>
+    <title>R tooling - Reproducible Research with R4R</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
@@ -12,7 +12,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">r4r</a>
+            <a class="navbar-brand" href="#home">R tooling</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,7 +32,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
                     <h1 class="hero-title">
-                        Make Your <!--<span class="switching-text" id="switchingText">Research</span>--> Research <span class="highlight">Reproducible</span> with r4r
+                        Make Your <!--<span class="switching-text" id="switchingText">Research</span>--> Research <span class="highlight">Reproducible</span> with R4R
                     </h1>
                     <p class="hero-subtitle">
                         Automatically build minimal, self-contained environments from your R notebooks. 
@@ -41,7 +41,7 @@
                     <div class="hero-buttons">
                         <button class="btn btn-primary">
                             <i class="fab fa-r-project me-2"></i>
-                            Start r4r for Free
+                            Try R4R for Free
                         </button>
                         <button class="btn btn-outline">
                             <i class="fas fa-info-circle me-2"></i>
@@ -79,7 +79,7 @@
                             </div>
                             <div class="file-tab">
                                 <i class="fas fa-file-code"></i>
-                                <span>analysis.R</span>
+                                <span>Script.R</span>
                                 <span class="close-tab">×</span>
                             </div>
                         </div>
@@ -92,19 +92,20 @@
                             <button class="toolbar-btn"><i class="fas fa-play"></i> Run</button>
                         </div>
                         <div class="code-content">
-                            <div class="code-line"><span class="line-num">1</span><span class="comment"># Install r4r package</span></div>
-                            <div class="code-line"><span class="line-num">2</span><span class="function">install.packages</span>(<span class="string">"r4r"</span>)</div>
-                            <div class="code-line"><span class="line-num">3</span><span class="keyword">library</span>(<span class="string">r4r</span>)</div>
-                            <div class="code-line"><span class="line-num">4</span>&nbsp;</div>
-                            <div class="code-line"><span class="line-num">5</span><span class="comment"># Automatically capture environment</span></div>
-                            <div class="code-line"><span class="line-num">6</span><span class="function">r4r_capture</span>(<span class="string">"my_analysis.Rmd"</span>)</div>
-                            <div class="code-line"><span class="line-num">7</span>&nbsp;</div>
-                            <div class="code-line"><span class="line-num">8</span><span class="comment"># Generate reproducible container</span></div>
-                            <div class="code-line"><span class="line-num">9</span><span class="function">r4r_build</span>(<span class="string">"my_analysis"</span>)</div>
-                            
+                            <div class="code-line"><span class="line-num">1</span><span class="comment"># Install r4rwrapper package from GitHub</span></div>
+                            <div class="code-line"><span class="line-num">2</span><span class="function">remotes::install_github</span>(<span class="string">"https://github.com/r-tooling/r4rwrapper"</span>)</div>
+                            <div class="code-line"><span class="line-num">3</span>&nbsp;</div>
+                            <div class="code-line"><span class="line-num">4</span><span class="comment"># Load the package to use its reproducibility functions</span></div>
+                            <div class="code-line"><span class="line-num">5</span><span class="keyword">library</span>(<span class="string">r4rwrapper</span>)</div>
+                            <div class="code-line"><span class="line-num">6</span>&nbsp;</div>
+                            <div class="code-line"><span class="line-num">7</span><span class="comment"># Trace the .Rmd file to detect used packages, data, system libs and OS info</span></div>
+                            <div class="code-line"><span class="line-num">8</span><span class="function">r4r_traceRmd</span>(<span class="string">rmdFile, output, image_tag, container_name, base_image="", skip_manifest=TRUE</span>)</div>
+                            <div class="code-line"><span class="line-num">9</span>&nbsp;</div>
+
+
                             <div class="success-message">
                                 <i class="fas fa-check me-2"></i>
-                                Environment captured successfully!
+                                Environment traced successfully!
                             </div>
                             <div class="info-message">
                                 <i class="fas fa-rocket me-2"></i>
@@ -117,14 +118,14 @@
         </div>
     </section>
 
-    <!-- Meet r4r Section -->
+    <!-- Meet R4R Section -->
     <section class="meet-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="section-title">Meet r4r: Effortless Reproducibility for R Workflows</h2>
+                    <h2 class="section-title">Meet R4R: Effortless Reproducibility for R Workflows</h2>
                     <p class="section-description">
-                        r4r automatically traces your notebook's execution and builds a lightweight Docker image with everything it needs—packages, system libs, data paths, and more.<br>
+                        R4R automatically traces your notebook's execution and builds a lightweight Docker image with everything it needs—packages, system libs, data paths, and more.<br>
                         No manual configuration. No bloated environments. Just seamless, portable reproducibility.
                     </p>
                 </div>
@@ -239,7 +240,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="subsection-title">Why r4r Works</h3>
+                    <h3 class="subsection-title">Why R4R Works</h3>
                     <div class="points-list">
                         <div class="point-item solution">
                             <i class="fas fa-magic"></i>
@@ -293,10 +294,10 @@
                             <div class="workflow-panel">
                                 <div class="panel-header">
                                     <i class="fab fa-r-project"></i>
-                                    <h3>r4r Workflow Overview</h3>
+                                    <h3>R4R Workflow Overview</h3>
                                 </div>
                                 <div class="workflow-description">
-                                    <p>Hover over the steps to see each phase of the r4r process in detail</p>
+                                    <p>Hover over the steps to see each phase of the R4R process in detail</p>
                                 </div>
                                 <div class="workflow-flow">
                                     <div class="workflow-step">
@@ -439,7 +440,7 @@
                             <div class="step-number">01</div>
                             <div class="step-text">
                                 <h4>Trace Execution</h4>
-                                <p>r4r observes program behavior during execution using low-level system instrumentation. All accessed files, system calls, and loaded packages are recorded.</p>
+                                <p>R4R observes program behavior during execution using low-level system instrumentation. All accessed files, system calls, and loaded packages are recorded.</p>
                             </div>
                         </div>
                         
@@ -471,7 +472,7 @@
                 <div class="col-lg-10 text-center">
                     <h2 class="section-title">Evaluated on Real-World R Workflows</h2>
                     <p class="section-content">
-                        We evaluated r4r on a corpus of R Markdown notebooks from Kaggle. The tool successfully reproduced <span class="highlight">97.5% of deterministic executions</span>, demonstrating its practical viability for capturing complete environments with minimal user intervention.
+                        We evaluated R4R on a corpus of R Markdown notebooks from Kaggle. The tool successfully reproduced <span class="highlight">97.5% of deterministic executions</span>, demonstrating its practical viability for capturing complete environments with minimal user intervention.
                     </p>
                 </div>
             </div>
@@ -520,13 +521,13 @@
                     </div>
                     <h2 class="cta-title">Start Building <span class="cta-highlight">Trustworthy</span> Environments</h2>
                     <p class="cta-description">
-                        Reproducibility shouldn't be a manual process. With r4r, it's automated, auditable, and portable.
+                        Reproducibility shouldn't be a manual process. With R4R, it's automated, auditable, and portable.
                     </p>
                     
                     <div class="cta-buttons">
                         <button class="btn btn-primary btn-glow">
                             <i class="fab fa-r-project me-2"></i>
-                            <span>Start r4r for Free</span>
+                            <span>Try R4R for Free</span>
                             <div class="btn-shine"></div>
                         </button>
                         <button class="btn btn-outline btn-glass">
@@ -558,9 +559,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="section-title">Choose Your Plan</h2>
+                    <h2 class="section-title">Free and Open Source</h2>
                     <p class="section-description">
-                        Start for free and upgrade when you need professional support
+                        R4R is free and open source, for both personal and professional use.<br><b>Start for free and upgrade when you need professional support.</b>
                     </p>
                 </div>
             </div>
@@ -571,9 +572,9 @@
                     <div class="pricing-card free-plan">
                         <div class="plan-header">
                             <div class="plan-badge">Free and open source</div>
-                            <h3 class="plan-title">r4r Community</h3>
+                            <h3 class="plan-title">R4R Community</h3>
                             <div class="plan-price">
-                                <span class="price">$0</span>
+                                <span class="price">free</span>
                                 <span class="period">forever</span>
                             </div>
                         </div>
@@ -610,8 +611,8 @@
                 <div class="col-lg-5 col-md-6 mb-4">
                     <div class="pricing-card paid-plan">
                         <div class="plan-header">
-                            <div class="plan-badge">Professional</div>
-                            <h3 class="plan-title">r4r Professional</h3>
+                            <div class="plan-badge">Support</div>
+                            <h3 class="plan-title">R4R Technical Support</h3>
                             <div class="plan-price">
                                 <span class="price">coming soon</span>
                                 <span class="period"></span>
@@ -662,19 +663,13 @@
                 <!-- Brand Column -->
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-brand">
-                        <h4 class="footer-logo">r4r</h4>
+                        <h4 class="footer-logo">R tooling</h4>
                         <p class="footer-description">
-                            Making R research reproducible through automated dependency capture and minimal Docker containerization.
+                            Making R research reproducible with R4R through automated dependency capture and minimal Docker containerization.
                         </p>
                         <div class="footer-social">
                             <a href="#" class="social-link">
                                 <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-linkedin"></i>
                             </a>
                             <a href="#" class="social-link">
                                 <i class="fas fa-envelope"></i>
@@ -686,23 +681,21 @@
                 <!-- Documentation Column -->
                 <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <div class="footer-links">
-                        <h5 class="footer-title">Documentation</h5>
+                        <h5 class="footer-title"><!--<a href="docs.html">Documentation</a>--> Documentation</h5>
                         <ul class="footer-nav">
-                            <li><a href="docs.html">Overview</a></li>
                             <li><a href="tutorial.html">Tutorial</a></li>
                             <li><a href="reference.html">Reference</a></li>
-                            <li><a href="examples.html">Examples</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Research Column -->
+                <!-- Documentation Column 2-->
                 <div class="col-lg-2 col-md-6 col-6 mb-4">
                     <div class="footer-links">
-                        <h5 class="footer-title">Research</h5>
+                        <h5 class="footer-title"><br></h5>
                         <ul class="footer-nav">
+                            <li><a href="examples.html">Examples</a></li>
                             <li><a href="publications.html">Publications</a></li>
-                            <li><a href="#">Case Studies</a></li>
                         </ul>
                     </div>
                 </div>
@@ -712,9 +705,8 @@
                     <div class="footer-links">
                         <h5 class="footer-title">Support</h5>
                         <ul class="footer-nav">
+                            <li><a href="#">Support</a></li>
                             <li><a href="#contact">Contact Us</a></li>
-                            <li><a href="#">Issue Tracker</a></li>
-                            <li><a href="#">FAQ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -726,7 +718,6 @@
                         <ul class="footer-nav">
                             <li><a href="#">CTU Prague</a></li>
                             <li><a href="#">About Team</a></li>
-                            <li><a href="#">Privacy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -737,7 +728,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <p class="footer-copyright">
-                            © 2025 r4r Project. Made with <i class="fas fa-heart text-danger"></i> for reproducible research.
+                            © 2025 R tooling initiative. Made with <i class="fas fa-heart text-danger"></i> for reproducible research.
                         </p>
                     </div>
                     <div class="col-md-6 text-md-end">
