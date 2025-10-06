@@ -20,7 +20,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="docs.html">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#free-open-source">Support</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contactus">Contact us</a></li>
             </div>
         </div>
@@ -39,14 +39,14 @@
                         No manual Docker setup. No lost dependencies. Just science that runs anywhere.
                     </p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary">
-                            <i class="fab fa-r-project me-2"></i>
-                            Try R4R for Free
-                        </button>
-                        <button class="btn btn-outline">
+                        <a class="btn btn-primary" href="https://github.com/r-tooling/r4r" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github me-2"></i>
+                            Start R4R for Free
+                        </a>
+                        <a class="btn btn-outline" href="#how-it-works">
                             <i class="fas fa-info-circle me-2"></i>
                             How It Works
-                        </button>
+                        </a>
                     </div>
                     
                     <!-- Trust indicators -->
@@ -277,7 +277,7 @@
     </section>
 
     <!-- How It Works Section -->
-    <section class="how-section">
+    <section class="how-section" id="how-it-works">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
@@ -323,7 +323,8 @@
                             </div>
                         </div>
                         
-                        <!-- Step Visuals - in progress 
+                        <!-- Step Visuals - in progress -->
+                        <!-- 
                         <div class="visual-slide" id="step1-visual">
                             <div class="terminal-panel">
                                 <div class="panel-header">
@@ -429,7 +430,8 @@
                                     <div class="result-info">Size: 245MB (70% smaller than manual build)</div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+                        -->
                     </div>
                 </div>
                 
@@ -495,10 +497,10 @@
             <div class="row mt-4 justify-content-center">
                 <div class="col-lg-8 text-center">
                     <div class="action-buttons">
-                        <button class="btn btn-primary me-3">
+                        <a class="btn btn-primary me-3" href="publications.html">
                             <i class="fas fa-file-alt me-2"></i>
                             Read More in Our Publication
-                        </button>
+                        </a>
                         <button class="btn btn-outline">
                             <i class="fas fa-box me-2"></i>
                             View a Sample Reproducible Artifact
@@ -525,11 +527,11 @@
                     </p>
                     
                     <div class="cta-buttons">
-                        <button class="btn btn-primary btn-glow">
-                            <i class="fab fa-r-project me-2"></i>
-                            <span>Try R4R for Free</span>
+                        <a class="btn btn-primary btn-glow" href="https://github.com/r-tooling/r4r" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github me-2"></i>
+                            <span>Start R4R for Free</span>
                             <div class="btn-shine"></div>
-                        </button>
+                        </a>
                         <button class="btn btn-outline btn-glass">
                             <i class="fas fa-envelope me-2"></i>
                             Get in Touch for Support
@@ -555,7 +557,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing-section">
+    <section class="pricing-section" id="free-open-source">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -599,10 +601,10 @@
                         </div>
                         
                         <div class="plan-cta">
-                            <button class="btn btn-outline-plan">
+                            <a class="btn btn-outline-plan" href="https://github.com/r-tooling/r4r" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-github me-2"></i>
                                 Get Started for Free
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -631,16 +633,17 @@
                         </div>
                         
                         <div class="plan-cta">
-                            <button class="btn btn-primary-plan">
+                            <a class="btn btn-primary-plan" href="#contactus">
                                 <i class="fas fa-envelope me-2"></i>
                                 Contact Us
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Bottom CTA -->
+             <!--
             <div class="row justify-content-center mt-5">
                 <div class="col-lg-8 text-center">
                     <div class="pricing-bottom">
@@ -650,6 +653,65 @@
                             <i class="fas fa-comments me-2"></i>
                             Let's Talk
                         </button>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contactus">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Contact Us</h2>
+                    <p class="section-description">
+                        Get in touch with the R tooling team. We're here to help you with your reproducible research needs and answer any questions you might have.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-4 g-4 align-items-stretch">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-card contact-card--general h-100">
+                        <div class="contact-header">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="contact-title">General Inquiries</h3>
+                        </div>
+                        <p class="contact-text">For general questions about R4R, collaborations, or support:</p>
+                        <a class="contact-link" href="mailto:"></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-6">
+                    <div class="contact-card contact-card--location h-100">
+                        <div class="contact-header">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="contact-title">Where to find us</h3>
+                        </div>
+                        <div class="location-columns">
+                            <div class="location-column">
+                                <div class="location-text">
+                                    Programming Research Laboratory<br>
+                                    Faculty of Information Technology<br>
+                                    Czech Technical University in Prague
+                                </div>
+                            </div>
+                            <div class="location-column">
+                                <div class="location-text">
+                                    Rooms TH:A-1250, 1252, 1254<br>
+                                    (Building A, 12th floor)<br>
+                                    Thákurova 7<br>
+                                    160 00 Prague 6 – Dejvice<br>
+                                    Czech Republic
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -668,7 +730,7 @@
                             Making R research reproducible with R4R through automated dependency capture and minimal Docker containerization.
                         </p>
                         <div class="footer-social">
-                            <a href="#" class="social-link">
+                            <a href="https://github.com/r-tooling/r4r" class="social-link" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-github"></i>
                             </a>
                             <a href="#" class="social-link">
@@ -694,8 +756,8 @@
                     <div class="footer-links">
                         <h5 class="footer-title"><br></h5>
                         <ul class="footer-nav">
-                            <li><a href="examples.html">Examples</a></li>
                             <li><a href="publications.html">Publications</a></li>
+                            <li><a href="examples.html">Examples</a></li>
                         </ul>
                     </div>
                 </div>
@@ -705,8 +767,8 @@
                     <div class="footer-links">
                         <h5 class="footer-title">Support</h5>
                         <ul class="footer-nav">
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="index.html#free-open-source">Support</a></li>
+                            <li><a href="index.html#contactus">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -716,8 +778,8 @@
                     <div class="footer-links">
                         <h5 class="footer-title">Organization</h5>
                         <ul class="footer-nav">
-                            <li><a href="#">CTU Prague</a></li>
-                            <li><a href="#">About Team</a></li>
+                            <li><a href="https://fit.cvut.cz/en/science-and-research/facilities/laboratories/8873-programming-research-laboratory-prl-prg" target="_blank" rel="noopener noreferrer">CTU Prague</a></li>
+                            <li><a href="https://prl-prg.github.io/index.html" target="_blank" rel="noopener noreferrer">About Team</a></li>
                         </ul>
                     </div>
                 </div>

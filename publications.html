@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R4R - Tutorial</title>
+    <title>R4R - Publications</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
@@ -42,13 +42,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="tutorial.html" class="nav-link active">
+                            <a href="tutorial.html" class="nav-link">
                                 <i class="fas fa-graduation-cap nav-icon"></i>
                                 Tutorial
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="publications.html" class="nav-link">
+                            <a href="publications.html" class="nav-link active">
                                 <i class="fas fa-file-alt nav-icon"></i>
                                 Publications
                             </a>
@@ -77,54 +77,57 @@
                 <nav class="breadcrumb-nav">
                     <i class="fas fa-file-alt breadcrumb-icon"></i>
                     <i class="fas fa-chevron-right breadcrumb-separator"></i>
-                    <span class="breadcrumb-current">Tutorial</span>
+                    <span class="breadcrumb-current">Publications</span>
                 </nav>
             </div>
 
             <!-- Content -->
             <div class="docs-content">
-                <h1 class="docs-title">Tutorial</h1>
-                
+                <h1 class="docs-title">Publications</h1>
+
                 <div class="docs-intro">
                     <p class="lead">
-                        Learn how to use R4R through our comprehensive video tutorial and step-by-step text guide below.
+                        Explore research outputs that showcase how R4R advances reproducibility in the R ecosystem.
                     </p>
-                    
-                    <p>                    </p>
-                    
-                    <p>                    </p>
+                </div>
 
-                    <!-- Coming Soon Notice -->
-                    <div class="coming-soon-notice">
-                        <div class="notice-content">
-                            <i class="fas fa-clock notice-icon"></i>
-                            <div>
-                                <h4>Step-by-Step Text Tutorial Coming Soon</h4>
-                                <p>We're working on a comprehensive written tutorial to complement our video demo. Check back soon for detailed instructions and examples.</p>
+                <div class="publication-list">
+                    <div class="card publication-card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center text-muted mb-2">
+                                <i class="fas fa-calendar me-2"></i>
+                                <span>REP'2025 • 2025 ACM Conference on Reproducibility and Replicability</span>
+                            </div>
+                            <h2 class="h4 mb-2">R4R: Reproducibility for R.</h2>
+                            <p class="mb-3 text-muted">Pierre Donat-Bouillud, Filip Křikava, Sebastián Krynski, Jan Vitek.</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a class="btn btn-primary publication-btn pdf-btn" href="assets/R4R_Reproducibility_for_R.pdf" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-file-pdf me-2"></i>
+                                    Read PDF
+                                </a>
+                                <a class="btn btn-outline-primary publication-btn doi-btn" href="https://doi.org/10.1145/3736731.3746156" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-link me-2"></i>
+                                    View DOI
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Video Demo Section -->
-                <div class="video-demo-section">
-                    <h2 class="video-title">R4R Plugin Demo</h2>
-                    
-                    <div class="video-container">
-                        <video 
-                            class="demo-video" 
-                            controls 
-                            preload="metadata">
-                            <source src="assets/r4r demo.webm" type="video/webm">
-                            <div class="video-fallback">
-                                <i class="fas fa-play-circle"></i>
-                                <p>Your browser doesn't support HTML5 video. You can <a href="assets/r4r demo.webm" download>download the video</a> instead.</p>
+                    <div class="card publication-card shadow-sm border-0 mb-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center text-muted mb-2">
+                                <i class="fas fa-calendar me-2"></i>
+                                <span>useR!'2025 • The R User Conference (Talk)</span>
                             </div>
-                        </video>
-                    </div>
-                    
-                    <div class="video-description">
-                        <p>                        </p>
+                            <h2 class="h4 mb-2">R4R: Reproducibility for R.</h2>
+                            <p class="mb-3 text-muted">Pierre Donat-Bouillud, Filip Křikava, Sebastián Krynski, Jan Vitek.</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                <a class="btn btn-outline-primary publication-btn slides-btn" href="https://docs.google.com/presentation/d/1o6nokVX1wnFL_lUvHc6FtbteWYGTolr17is7i9iXceQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-slideshare me-2"></i>
+                                    View Slides
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,26 +232,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Documentation page interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Search functionality (basic)
             const searchInput = document.querySelector('.search-input');
             if (searchInput) {
                 searchInput.addEventListener('input', function() {
-                    // Add search functionality here
                     console.log('Searching for:', this.value);
-                });
-            }
-
-            // Video interaction tracking
-            const video = document.querySelector('.demo-video');
-            if (video) {
-                video.addEventListener('play', function() {
-                    console.log('Video started playing');
-                });
-                
-                video.addEventListener('ended', function() {
-                    console.log('Video finished playing');
                 });
             }
         });
