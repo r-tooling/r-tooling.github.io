@@ -54,12 +54,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="reference.html" class="nav-link">
-                                <i class="fas fa-book nav-icon"></i>
-                                Reference
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="examples.html" class="nav-link">
                                 <i class="fas fa-code nav-icon"></i>
                                 Examples
@@ -94,16 +88,103 @@
                     
                     <p>                    </p>
 
-                    <!-- Coming Soon Notice -->
-                    <div class="coming-soon-notice">
-                        <div class="notice-content">
-                            <i class="fas fa-clock notice-icon"></i>
-                            <div>
-                                <h4>Step-by-Step Text Tutorial Coming Soon</h4>
-                                <p>We're working on a comprehensive written tutorial to complement our video demo. Check back soon for detailed instructions and examples.</p>
-                            </div>
-                        </div>
+                    <h2 class="mt-4">r4r — Installation and Usage Tutorial</h2>
+                    <p>This tutorial explains how to install r4r and how to use it to create a fully reproducible execution environment for R code. Compared to the README, it provides more context and step-by-step guidance so that new users can easily follow along, even if they have little experience with Docker or reproducibility tooling.</p>
+
+                    <hr>
+
+                    <h3>Installing r4r</h3>
+                    <p>The easiest way to get started with r4r is to download the prebuilt binary from the project's release page. The tool currently supports Debian and Ubuntu, but it will also run on other distributions. On non-Debian systems, package resolution may not be available, and files will be copied directly instead of being mapped to system packages.</p>
+                    <p>To install r4r, visit: <a href="https://github.com/r-tooling/r4r/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a></p>
+                    <p>Download the binary for your system and make it executable:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-1" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-1"><code class="language-bash">chmod +x r4r</code></pre>
                     </div>
+                    <p>You may optionally move the binary into your system's PATH so it can be called from anywhere:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-2" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-2"><code class="language-bash">sudo mv r4r /usr/local/bin/</code></pre>
+                    </div>
+                    <p>If you prefer to build the tool from source, clone the repository and compile it using CMake:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-3" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-3"><code class="language-bash">git clone git@github.com:r-tooling/r4r.git
+cd r4r
+make install BUILD_TYPE=Release</code></pre>
+                    </div>
+                    <p>After the build finishes, the executable will be available in the <code>build/r4r</code> directory.</p>
+
+                    <hr>
+
+                    <h3>Running r4r on an R Notebook</h3>
+                    <p>Once the tool is installed, you can use it to execute an R script or R Markdown notebook while tracing all filesystem accesses, R package usage, and system dependencies. r4r then bundles this information, generates a Dockerfile, and builds a self-contained Docker image capable of re-running the same computation in the future.</p>
+                    <p>A minimal example looks like this:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-4" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-4"><code class="language-bash">r4r R -e "rmarkdown::render('path/to/notebook.Rmd')"     --output output     --result notebook.html</code></pre>
+                    </div>
+                    <p>In this example, the tool executes the rendering of the notebook, traces the environment, and creates an <code>output</code> directory containing:</p>
+                    <ul>
+                        <li>a generated Dockerfile,</li>
+                        <li>a Makefile,</li>
+                        <li>an archive of all captured input files,</li>
+                        <li>metadata about package and system dependencies.</li>
+                    </ul>
+                    <p>After generating those files, r4r automatically builds a Docker image (by default under the tag <code>r4r/test</code>) and runs it to re-execute the notebook inside a clean, isolated container. The produced HTML document is placed into <code>output/result</code>, so you can check whether the reproduced output matches the original one.</p>
+                    <p>If you prefer that r4r only generates the files but does not build the Docker image automatically, you can pass the <code>--skip-make</code> flag. In that case, you can manually build and run the environment from inside the output directory:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-5" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-5"><code class="language-bash">make build
+make copy</code></pre>
+                    </div>
+
+                    <hr>
+
+                    <h3>A Realistic Example</h3>
+                    <p>Here is a full example based on an actual workflow. It renders an R Markdown notebook located in a repository and stores both the output directory and the final HTML result in custom paths. It also makes use of a cached base image to speed up the build process:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-6" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-6"><code class="language-bash">build/r4r   --output repositories/output-projectname   --result result/repositories/projectname.html   --default-image-file repositories/ubuntu:24.04.cache   R -e "rmarkdown::render('repositories/projectname.Rmd')"</code></pre>
+                    </div>
+                    <p>The meaning of each argument is straightforward:</p>
+                    <ul>
+                        <li><code>--output</code> specifies where r4r should write all captured files, metadata, and the generated Dockerfile.</li>
+                        <li><code>--result</code> indicates where the final rendered HTML file should be saved after re-executing the notebook inside the Docker image.</li>
+                        <li><code>--default-image-file</code> points to a cached base image, which avoids rebuilding the system base from scratch.</li>
+                        <li>The trailing <code>R -e "rmarkdown::render(...)</code> is the actual command that r4r monitors and reproduces.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>Uploading or Exporting the Docker Image</h3>
+                    <p>If you want to share the generated Docker image publicly, you may push it to a container registry:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-7" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-7"><code class="language-bash">docker push r4r/test</code></pre>
+                    </div>
+                    <p>You can also export the image to a tar archive for long-term storage:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-8" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-8"><code class="language-bash">docker save r4r/test -o r4r-test.tar</code></pre>
+                    </div>
+                    <p>Compressing the archive afterwards is recommended, as uncompressed Docker images can be large.</p>
+
+                    <hr>
+
+                    <h3>Verifying Reproducibility</h3>
+                    <p>After r4r re-runs the notebook inside the container, you will find the reproduced output in the <code>output/result</code> directory (or in the custom path you defined with <code>--result</code>). You can compare this output with your original notebook result to ensure that the execution was completely reproducible.</p>
+                    <p>Minor differences may occasionally appear if underlying libraries change — this is especially true for HTML notebooks whose JavaScript dependencies may evolve over time.</p>
+
+                    <hr>
+
+                    <h3>Getting Help</h3>
+                    <p>More advanced options are available directly from the tool. You can view them with:</p>
+                    <div class="code-block">
+                        <button class="code-block__copy" data-copy-target="#code-snippet-9" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre id="code-snippet-9"><code class="language-bash">r4r --help</code></pre>
+                    </div>
+                    <p>This will show a full overview of command-line arguments, including additional flags for verbosity, Docker naming, and detailed control over the tracing and build phases.</p>
                 </div>
 
                 <!-- Video Demo Section -->
@@ -154,21 +235,11 @@
                 </div>
 
                 <!-- Documentation Column -->
-                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                <div class="col-lg-2 offset-lg-2 col-md-6 col-6 mb-4">
                     <div class="footer-links">
                         <h5 class="footer-title"><!--<a href="docs.html">Documentation</a>--> Documentation</h5>
                         <ul class="footer-nav">
                             <li><a href="tutorial.html">Tutorial</a></li>
-                            <li><a href="reference.html">Reference</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Documentation Column 2-->
-                <div class="col-lg-2 col-md-6 col-6 mb-4">
-                    <div class="footer-links">
-                        <h5 class="footer-title"><br></h5>
-                        <ul class="footer-nav">
                             <li><a href="publications.html">Publications</a></li>
                             <li><a href="examples.html">Examples</a></li>
                         </ul>
@@ -251,6 +322,41 @@
                     console.log('Video finished playing');
                 });
             }
+
+            // Copy-to-clipboard for code blocks
+            const copyButtons = document.querySelectorAll('.code-block__copy');
+            copyButtons.forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const targetSelector = this.getAttribute('data-copy-target');
+                    const pre = document.querySelector(targetSelector);
+                    if (!pre) return;
+                    const code = pre.innerText;
+                    const originalHTML = this.innerHTML;
+                    try {
+                        await navigator.clipboard.writeText(code);
+                        this.innerHTML = '<i class="fas fa-check" style="color: #34c759;"></i>';
+                        this.style.borderColor = 'rgba(52, 199, 89, 0.3)';
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.borderColor = '';
+                        }, 2000);
+                    } catch (e) {
+                        // Fallback
+                        const textarea = document.createElement('textarea');
+                        textarea.value = code;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                        this.innerHTML = '<i class="fas fa-check" style="color: #34c759;"></i>';
+                        this.style.borderColor = 'rgba(52, 199, 89, 0.3)';
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.borderColor = '';
+                        }, 2000);
+                    }
+                });
+            });
         });
     </script>
 </body>

@@ -12,16 +12,35 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">R tooling</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">R tooling</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="docs.html">Docs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#free-open-source">Support</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contactus">Contact us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-nav="home">
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="docs.html">
+                            <span>Docs</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#free-open-source" data-nav="support">
+                            <span>Support</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contactus" data-nav="contact">
+                            <span>Contact us</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -176,33 +195,6 @@
                     Manually collecting environment details, building Dockerfiles, or relying on package metadata is error-prone and incomplete. And tools that only capture language-level dependencies fall short when notebooks rely on native code or external resources.
                 </p>
             </div>
-
-            <!--
-             Statistics Cards
-            <div class="row mt-5 justify-content-center g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="stat-card">
-                        <div class="stat-number">74%</div>
-                        <div class="stat-label">of the code did not successfully complete execution, in a study of 2000 replication datasets with code in R</div>
-                        <div class="stat-source">r4r paper</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="stat-card">
-                        <div class="stat-number">4.2 hrs</div>
-                        <div class="stat-label">average time spent debugging environment issues</div>
-                        <div class="stat-source">Developer survey, 2024</div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="stat-card">
-                        <div class="stat-number">89%</div>
-                        <div class="stat-label">of researchers struggle with dependency management</div>
-                        <div class="stat-source">Academic Computing Report</div>
-                    </div>
-                </div>
-            </div>
-            -->
             
             <!-- Pain Points vs Solutions -->
             <div class="row mt-5 g-5">
@@ -284,181 +276,193 @@
                     <h2 class="section-title">How Does It Work?</h2>
                 </div>
             </div>
-            
-            <div class="row mt-5 align-items-start">
-                <!-- Visual Area -->
-                <div class="col-lg-7">
-                    <div class="visual-container">
-                        <!-- Default Visual -->
-                        <div class="visual-slide active" id="default-visual">
-                            <div class="workflow-panel">
-                                <div class="panel-header">
-                                    <i class="fab fa-r-project"></i>
-                                    <h3>R4R Workflow Overview</h3>
-                                </div>
-                                <div class="workflow-description">
-                                    <p>Hover over the steps to see each phase of the R4R process in detail</p>
-                                </div>
-                                <div class="workflow-flow">
-                                    <div class="workflow-step">
-                                        <div class="workflow-emoji">📊</div>
-                                        <div class="workflow-label">Notebook</div>
-                                    </div>
-                                    <div class="workflow-arrow">→</div>
-                                    <div class="workflow-step">
-                                        <div class="workflow-emoji">🔍</div>
-                                        <div class="workflow-label">Trace</div>
-                                    </div>
-                                    <div class="workflow-arrow">→</div>
-                                    <div class="workflow-step">
-                                        <div class="workflow-emoji">📦</div>
-                                        <div class="workflow-label">Dependencies</div>
-                                    </div>
-                                    <div class="workflow-arrow">→</div>
-                                    <div class="workflow-step">
-                                        <div class="workflow-emoji">🐳</div>
-                                        <div class="workflow-label">Docker</div>
-                                    </div>
-                                </div>
-                            </div>
+
+            <!-- Workflow Flow Stepper -->
+            <div class="row mt-4 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="workflow-flow-compact">
+                        <div class="workflow-step">
+                            <div class="workflow-emoji">📊</div>
+                            <div class="workflow-label">Notebook</div>
                         </div>
-                        
-                        <!-- Step Visuals - in progress -->
-                        <!-- 
-                        <div class="visual-slide" id="step1-visual">
-                            <div class="terminal-panel">
-                                <div class="panel-header">
-                                    <i class="fas fa-terminal"></i>
-                                    <h3>r4r System Tracer</h3>
-                                </div>
-                                <div class="terminal-content">
-                                    <div class="terminal-line command">$ r4r trace analysis.R</div>
-                                    <div class="terminal-line output">→ Monitoring system calls...</div>
-                                    <div class="terminal-line output">→ open(/usr/lib/R/library/base/R/base)</div>
-                                    <div class="terminal-line output">→ read(data/input.csv, 245KB)</div>
-                                    <div class="terminal-line output">→ dlopen(ggplot2.so)</div>
-                                    <div class="terminal-line output">→ write(results/plot.png, 128KB)</div>
-                                    <div class="terminal-line success">✓ Trace completed: 47 files accessed</div>
-                                </div>
-                            </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="workflow-step workflow-step-clickable" data-workflow-step="1">
+                            <div class="workflow-emoji">🔍</div>
+                            <div class="workflow-label">Trace</div>
                         </div>
-                        
-                        <div class="visual-slide" id="step2-visual">
-                            <div class="dependency-panel">
-                                <div class="panel-header">
-                                    <i class="fas fa-sitemap"></i>
-                                    <h3>Dependency Analysis</h3>
-                                </div>
-                                <div class="dependency-sections">
-                                    <div class="dep-section">
-                                        <div class="dep-title">
-                                            <i class="fab fa-r-project"></i>
-                                            <span>R Packages (3)</span>
-                                        </div>
-                                        <div class="dep-items">
-                                            <div class="dep-item">ggplot2 v3.4.0</div>
-                                            <div class="dep-item">dplyr v1.1.0</div>
-                                            <div class="dep-item">readr v2.1.3</div>
-                                        </div>
-                                    </div>
-                                    <div class="dep-section">
-                                        <div class="dep-title">
-                                            <i class="fas fa-cogs"></i>
-                                            <span>System Libraries (2)</span>
-                                        </div>
-                                        <div class="dep-items">
-                                            <div class="dep-item">libssl.so.1.1</div>
-                                            <div class="dep-item">libcurl.so.4</div>
-                                        </div>
-                                    </div>
-                                    <div class="dep-section">
-                                        <div class="dep-title">
-                                            <i class="fas fa-folder"></i>
-                                            <span>Data Files (1)</span>
-                                        </div>
-                                        <div class="dep-items">
-                                            <div class="dep-item">data/input.csv</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="workflow-step workflow-step-clickable" data-workflow-step="2">
+                            <div class="workflow-emoji">📦</div>
+                            <div class="workflow-label">Dependencies</div>
                         </div>
-                        
-                        <div class="visual-slide" id="step3-visual">
-                            <div class="docker-panel">
-                                <div class="panel-header">
-                                    <i class="fab fa-docker"></i>
-                                    <h3>Docker Image Build</h3>
-                                </div>
-                                <div class="build-steps">
-                                    <div class="build-step">
-                                        <span class="step-num">1/6</span>
-                                        <span class="step-cmd">FROM r-base:4.3.0</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                    <div class="build-step">
-                                        <span class="step-num">2/6</span>
-                                        <span class="step-cmd">COPY requirements.txt .</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                    <div class="build-step">
-                                        <span class="step-num">3/6</span>
-                                        <span class="step-cmd">RUN install.packages(...)</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                    <div class="build-step">
-                                        <span class="step-num">4/6</span>
-                                        <span class="step-cmd">COPY analysis.R data/</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                    <div class="build-step">
-                                        <span class="step-num">5/6</span>
-                                        <span class="step-cmd">RUN R CMD check</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                    <div class="build-step">
-                                        <span class="step-num">6/6</span>
-                                        <span class="step-cmd">CMD ["Rscript", "analysis.R"]</span>
-                                        <span class="step-status">✓</span>
-                                    </div>
-                                </div>
-                                <div class="build-result">
-                                    <div class="result-success">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>Image built successfully: r4r-analysis:latest</span>
-                                    </div>
-                                    <div class="result-info">Size: 245MB (70% smaller than manual build)</div>
-                                </div>
-                            </div>
+                        <div class="workflow-arrow">→</div>
+                        <div class="workflow-step workflow-step-clickable" data-workflow-step="3">
+                            <div class="workflow-emoji">🐳</div>
+                            <div class="workflow-label">Docker</div>
                         </div>
-                        -->
                     </div>
                 </div>
-                
-                <!-- Steps List -->
-                <div class="col-lg-5">
-                    <div class="steps-list">
-                        <div class="step-item" data-step="1">
-                            <div class="step-number">01</div>
-                            <div class="step-text">
-                                <h4>Trace Execution</h4>
-                                <p>R4R observes program behavior during execution using low-level system instrumentation. All accessed files, system calls, and loaded packages are recorded.</p>
+            </div>
+
+            <!-- Interactive Steps -->
+            <div class="row mt-4 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="steps-container">
+                        <!-- Step 1: Trace Execution -->
+                        <div class="step-card" data-step="1">
+                            <div class="step-card-header">
+                                <div class="step-card-number">01</div>
+                                <div class="step-card-content">
+                                    <h3>Trace Execution</h3>
+                                    <p class="step-card-description">
+                                        R4R observes program behavior during execution using low-level system instrumentation. All accessed files, system calls, and loaded packages are recorded.
+                                    </p>
+                                </div>
+                                <button class="step-toggle" aria-label="Toggle step details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="step-card-body">
+                                <div class="step-visualization">
+                                    <div class="terminal-panel">
+                                        <div class="panel-header">
+                                            <i class="fas fa-terminal"></i>
+                                            <h3>r4r System Tracer</h3>
+                                        </div>
+                                        <div class="terminal-content">
+                                            <div class="terminal-line command">$ r4r trace analysis.R</div>
+                                            <div class="terminal-line output">→ Monitoring system calls...</div>
+                                            <div class="terminal-line output">→ open(/usr/lib/R/library/base/R/base)</div>
+                                            <div class="terminal-line output">→ read(data/input.csv, 245KB)</div>
+                                            <div class="terminal-line output">→ dlopen(ggplot2.so)</div>
+                                            <div class="terminal-line output">→ write(results/plot.png, 128KB)</div>
+                                            <div class="terminal-line success">✓ Trace completed: 47 files accessed</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="step-item" data-step="2">
-                            <div class="step-number">02</div>
-                            <div class="step-text">
-                                <h4>Extract Dependencies</h4>
-                                <p>The tool identifies language-level and system-level requirements—R packages, native libraries, external binaries, data sources, and more.</p>
+
+                        <!-- Step 2: Extract Dependencies -->
+                        <div class="step-card" data-step="2">
+                            <div class="step-card-header">
+                                <div class="step-card-number">02</div>
+                                <div class="step-card-content">
+                                    <h3>Extract Dependencies</h3>
+                                    <p class="step-card-description">
+                                        The tool identifies language-level and system-level requirements—R packages, native libraries, external binaries, data sources, and more.
+                                    </p>
+                                </div>
+                                <button class="step-toggle" aria-label="Toggle step details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="step-card-body">
+                                <div class="step-visualization">
+                                    <div class="dependency-panel">
+                                        <div class="panel-header">
+                                            <i class="fas fa-sitemap"></i>
+                                            <h3>Dependency Analysis</h3>
+                                        </div>
+                                        <div class="dependency-sections">
+                                            <div class="dep-section">
+                                                <div class="dep-title">
+                                                    <i class="fab fa-r-project"></i>
+                                                    <span>R Packages (3)</span>
+                                                </div>
+                                                <div class="dep-items">
+                                                    <div class="dep-item">ggplot2 v3.4.0</div>
+                                                    <div class="dep-item">dplyr v1.1.0</div>
+                                                    <div class="dep-item">readr v2.1.3</div>
+                                                </div>
+                                            </div>
+                                            <div class="dep-section">
+                                                <div class="dep-title">
+                                                    <i class="fas fa-cogs"></i>
+                                                    <span>System Libraries (2)</span>
+                                                </div>
+                                                <div class="dep-items">
+                                                    <div class="dep-item">libssl.so.1.1</div>
+                                                    <div class="dep-item">libcurl.so.4</div>
+                                                </div>
+                                            </div>
+                                            <div class="dep-section">
+                                                <div class="dep-title">
+                                                    <i class="fas fa-folder"></i>
+                                                    <span>Data Files (1)</span>
+                                                </div>
+                                                <div class="dep-items">
+                                                    <div class="dep-item">data/input.csv</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="step-item" data-step="3">
-                            <div class="step-number">03</div>
-                            <div class="step-text">
-                                <h4>Construct Minimal Image</h4>
-                                <p>A Docker image is assembled with only the essential components needed to faithfully re-execute the notebook. The environment is isolated, transferable, and validated via output diffing.</p>
+
+                        <!-- Step 3: Construct Minimal Image -->
+                        <div class="step-card" data-step="3">
+                            <div class="step-card-header">
+                                <div class="step-card-number">03</div>
+                                <div class="step-card-content">
+                                    <h3>Construct Minimal Image</h3>
+                                    <p class="step-card-description">
+                                        A Docker image is assembled with only the essential components needed to faithfully re-execute the notebook. The environment is isolated, transferable, and validated via output diffing.
+                                    </p>
+                                </div>
+                                <button class="step-toggle" aria-label="Toggle step details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="step-card-body">
+                                <div class="step-visualization">
+                                    <div class="docker-panel">
+                                        <div class="panel-header">
+                                            <i class="fab fa-docker"></i>
+                                            <h3>Docker Image Build</h3>
+                                        </div>
+                                        <div class="build-steps">
+                                            <div class="build-step">
+                                                <span class="step-num">1/6</span>
+                                                <span class="step-cmd">FROM r-base:4.3.0</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                            <div class="build-step">
+                                                <span class="step-num">2/6</span>
+                                                <span class="step-cmd">COPY requirements.txt .</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                            <div class="build-step">
+                                                <span class="step-num">3/6</span>
+                                                <span class="step-cmd">RUN install.packages(...)</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                            <div class="build-step">
+                                                <span class="step-num">4/6</span>
+                                                <span class="step-cmd">COPY analysis.R data/</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                            <div class="build-step">
+                                                <span class="step-num">5/6</span>
+                                                <span class="step-cmd">RUN R CMD check</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                            <div class="build-step">
+                                                <span class="step-num">6/6</span>
+                                                <span class="step-cmd">CMD ["Rscript", "analysis.R"]</span>
+                                                <span class="step-status">✓</span>
+                                            </div>
+                                        </div>
+                                        <div class="build-result">
+                                            <div class="result-success">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>Image built successfully: r4r-analysis:latest</span>
+                                            </div>
+                                            <div class="result-info">Size: 245MB (70% smaller than manual build)</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -482,12 +486,12 @@
             <!-- Statistics -->
             <div class="evaluation-stats">
                 <div class="evaluation-stat">
-                    <div class="stat-number">97.5%</div>
+                    <div class="stat-number" data-target="97.5" data-suffix="%">0%</div>
                     <div class="stat-label">Success Rate</div>
                     <div class="stat-source">Kaggle R notebooks</div>
                 </div>
                 <div class="evaluation-stat">
-                    <div class="stat-number">120+</div>
+                    <div class="stat-number" data-target="120" data-suffix="+">0+</div>
                     <div class="stat-label">Notebooks Tested</div>
                     <div class="stat-source">Real-world workflows</div>
                 </div>
@@ -568,95 +572,106 @@
                 </div>
             </div>
             
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5 g-4">
                 <!-- Free Plan -->
-                <div class="col-lg-5 col-md-6 mb-4">
-                    <div class="pricing-card free-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge">Free and open source</div>
-                            <h3 class="plan-title">R4R Community</h3>
-                            <div class="plan-price">
-                                <span class="price">free</span>
-                                <span class="period">forever</span>
+                <div class="col-lg-5 col-md-6">
+                    <div class="pricing-card pricing-card--free">
+                        <div class="pricing-card-inner">
+                            <div class="plan-badge plan-badge--free">
+                                <span>Free and Open Source</span>
                             </div>
-                        </div>
-                        
-                        <div class="plan-features">
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>AGPL-licensed</span>
+                            
+                            <div class="plan-header">
+                                <h3 class="plan-title">R4R Community</h3>
+                                <div class="plan-price">
+                                    <span class="price">free</span>
+                                    <span class="period">forever</span>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>Unlimited notebook captures</span>
+                            
+                            <div class="plan-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">AGPL-licensed</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Unlimited notebook captures</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Docker image generation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Basic dependency detection</span>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>Docker image generation</span>
+                            
+                            <div class="plan-cta">
+                                <a class="btn btn-pricing btn-pricing--free" href="https://github.com/r-tooling/r4r" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                    <span>Get Started for Free</span>
+                                </a>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>Basic dependency detection</span>
-                            </div>
-                        </div>
-                        
-                        <div class="plan-cta">
-                            <a class="btn btn-outline-plan" href="https://github.com/r-tooling/r4r" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github me-2"></i>
-                                Get Started for Free
-                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Paid Plan -->
-                <div class="col-lg-5 col-md-6 mb-4">
-                    <div class="pricing-card paid-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge">Support</div>
-                            <h3 class="plan-title">R4R Technical Support</h3>
-                            <div class="plan-price">
-                                <span class="price">coming soon</span>
-                                <span class="period"></span>
+                <div class="col-lg-5 col-md-6">
+                    <div class="pricing-card pricing-card--paid">
+                        <div class="pricing-card-inner">
+                            <div class="plan-badge plan-badge--paid">
+                                <span>Support</span>
                             </div>
-                        </div>
-                        
-                        <div class="plan-features">
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>Everything in Community</span>
+                            
+                            <div class="plan-header">
+                                <h3 class="plan-title">R4R Technical Support</h3>
+                                <div class="plan-price">
+                                    <span class="price price--coming-soon">coming soon</span>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-check"></i>
-                                <span>Priority technical support</span>
+                            
+                            <div class="plan-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Everything in Community</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Priority technical support</span>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <span class="feature-text">Priority feature requests</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="plan-cta">
-                            <a class="btn btn-primary-plan" href="#contactus">
-                                <i class="fas fa-envelope me-2"></i>
-                                Contact Us
-                            </a>
+                            
+                            <div class="plan-cta">
+                                <a class="btn btn-pricing btn-pricing--paid" href="#contactus">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Contact Us</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Bottom CTA -->
-             <!--
-            <div class="row justify-content-center mt-5">
-                <div class="col-lg-8 text-center">
-                    <div class="pricing-bottom">
-                        <h4>Need a custom solution?</h4>
-                        <p>We offer tailored packages for universities, research institutions, and large organizations.</p>
-                        <button class="btn btn-outline">
-                            <i class="fas fa-comments me-2"></i>
-                            Let's Talk
-                        </button>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
     </section>
 
@@ -682,7 +697,7 @@
                             <h3 class="contact-title">General Inquiries</h3>
                         </div>
                         <p class="contact-text">For general questions about R4R, collaborations, or support:</p>
-                        <a class="contact-link" href="mailto:"></a>
+                        <a class="contact-link" href="#" data-email="obfuscated">Click to reveal</a>
                     </div>
                 </div>
 
@@ -741,21 +756,11 @@
                 </div>
 
                 <!-- Documentation Column -->
-                <div class="col-lg-2 col-md-6 col-6 mb-4">
+                <div class="col-lg-2 offset-lg-2 col-md-6 col-6 mb-4">
                     <div class="footer-links">
                         <h5 class="footer-title"><!--<a href="docs.html">Documentation</a>--> Documentation</h5>
                         <ul class="footer-nav">
                             <li><a href="tutorial.html">Tutorial</a></li>
-                            <li><a href="reference.html">Reference</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Documentation Column 2-->
-                <div class="col-lg-2 col-md-6 col-6 mb-4">
-                    <div class="footer-links">
-                        <h5 class="footer-title"><br></h5>
-                        <ul class="footer-nav">
                             <li><a href="publications.html">Publications</a></li>
                             <li><a href="examples.html">Examples</a></li>
                         </ul>
@@ -816,67 +821,251 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Interactive How It Works Section
+        // Navigation Enhancement
         document.addEventListener('DOMContentLoaded', function() {
-            const stepItems = document.querySelectorAll('.step-item');
-            const visualSlides = document.querySelectorAll('.visual-slide');
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.querySelectorAll('.nav-link[data-nav]');
             
-            function showStep(stepNumber) {
-                // Hide all visuals and show selected one
-                visualSlides.forEach(slide => slide.classList.remove('active'));
-                document.getElementById(`step${stepNumber}-visual`).classList.add('active');
+            // Navbar scroll effect
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
                 
-                // Update active step
-                stepItems.forEach(item => item.classList.remove('active'));
-                document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+                if (currentScroll > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                lastScroll = currentScroll;
+            });
+            
+            // Smooth scroll for anchor links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offset = 80; // Navbar height
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Update active state
+                            navLinks.forEach(nav => nav.classList.remove('active'));
+                            this.classList.add('active');
+                            
+                            // Close mobile menu if open
+                            const navbarCollapse = document.querySelector('.navbar-collapse');
+                            if (navbarCollapse.classList.contains('show')) {
+                                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                                if (bsCollapse) {
+                                    bsCollapse.hide();
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            function updateActiveNav() {
+                const scrollPosition = window.pageYOffset + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
             }
             
-            function showDefault() {
-                // Show default visual and remove active states
-                visualSlides.forEach(slide => slide.classList.remove('active'));
-                document.getElementById('default-visual').classList.add('active');
-                stepItems.forEach(item => item.classList.remove('active'));
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav(); // Initial check
+
+            // Email obfuscation for General Inquiries
+            const generalEmailLink = document.querySelector('.contact-card--general .contact-link[data-email="obfuscated"]');
+            if (generalEmailLink) {
+                const u = 'pierre' + '.' + 'donat' + '.' + 'bouillud';
+                const d = 'fit' + '.' + 'cvut' + '.' + 'cz';
+                const e = `${u}@${d}`;
+                generalEmailLink.textContent = e;
+                generalEmailLink.setAttribute('href', `mailto:${e}`);
+                generalEmailLink.setAttribute('rel', 'nofollow');
+            }
+        });
+
+        // Interactive How It Works Section - Accordion Style with Workflow Stepper
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepCards = document.querySelectorAll('.step-card');
+            const stepToggles = document.querySelectorAll('.step-toggle');
+            const workflowSteps = document.querySelectorAll('.workflow-step-clickable');
+            
+            // Function to update workflow stepper state
+            function updateWorkflowStepper(activeStep) {
+                workflowSteps.forEach((step) => {
+                    step.classList.remove('active');
+                    const stepNum = parseInt(step.getAttribute('data-workflow-step'));
+                    if (stepNum === activeStep) {
+                        step.classList.add('active');
+                    }
+                });
             }
             
-            // Add hover events to steps
-            stepItems.forEach(item => {
-                const stepNumber = item.getAttribute('data-step');
-                item.addEventListener('mouseenter', () => showStep(stepNumber));
-                item.addEventListener('mouseleave', showDefault);
+            // Function to open a specific card
+            function openCard(cardIndex) {
+                const card = stepCards[cardIndex];
+                const toggle = stepToggles[cardIndex];
+                const isActive = card.classList.contains('active');
+                const icon = toggle.querySelector('i');
+                
+                // Close all cards
+                stepCards.forEach(c => {
+                    c.classList.remove('active');
+                });
+                stepToggles.forEach(t => {
+                    const i = t.querySelector('i');
+                    i.classList.remove('fa-chevron-up');
+                    i.classList.add('fa-chevron-down');
+                });
+                
+                // If it wasn't active, open it
+                if (!isActive) {
+                    card.classList.add('active');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                    
+                    // Update workflow stepper
+                    updateWorkflowStepper(cardIndex + 1);
+                    
+                    // Smooth scroll to card
+                    setTimeout(() => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                } else {
+                    // If closing, reset workflow stepper
+                    updateWorkflowStepper(0);
+                }
+            }
+            
+            // Initialize - first card expanded by default
+            if (stepCards.length > 0) {
+                stepCards[0].classList.add('active');
+                stepToggles[0].querySelector('i').classList.remove('fa-chevron-down');
+                stepToggles[0].querySelector('i').classList.add('fa-chevron-up');
+                updateWorkflowStepper(1);
+            }
+            
+            // Toggle accordion functionality
+            stepToggles.forEach((toggle, index) => {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openCard(index);
+                });
+            });
+            
+            // Also allow clicking on the card header to toggle
+            stepCards.forEach((card, index) => {
+                const header = card.querySelector('.step-card-header');
+                const toggle = card.querySelector('.step-toggle');
+                
+                header.addEventListener('click', function(e) {
+                    if (e.target !== toggle && !toggle.contains(e.target)) {
+                        openCard(index);
+                    }
+                });
+            });
+            
+            // Workflow step click functionality
+            workflowSteps.forEach((step) => {
+                step.addEventListener('click', function() {
+                    const stepNum = parseInt(this.getAttribute('data-workflow-step'));
+                    openCard(stepNum - 1);
+                });
             });
 
-            /* Switching text - in progress
-            // Text switching animation - slides from up going down
-            const switchingText = document.getElementById('switchingText');
-            const words = ['Research', 'R Code'];
-            let currentIndex = 0;
 
-            function switchText() {
-                // Slide out (down)
-                switchingText.classList.add('slide-out');
-                
-                setTimeout(() => {
-                    // Change text
-                    currentIndex = (currentIndex + 1) % words.length;
-                    switchingText.textContent = words[currentIndex];
-                    
-                    // Slide in (from up)
-                    switchingText.classList.remove('slide-out');
-                    switchingText.classList.add('slide-in');
-                }, 400);
+            // Animated counter for statistics with easing
+            function animateCounter(element) {
+                const target = parseFloat(element.getAttribute('data-target'));
+                const suffix = element.getAttribute('data-suffix') || '';
+                const duration = 2000; // 2 seconds
+                const startTime = Date.now();
+                const startValue = 0;
 
-                setTimeout(() => {
-                    switchingText.classList.remove('slide-in');
-                }, 800);
+                function easeOutCubic(t) {
+                    return 1 - Math.pow(1 - t, 3);
+                }
+
+                function updateCounter() {
+                    const elapsed = Date.now() - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = easeOutCubic(progress);
+                    const current = startValue + (target - startValue) * easedProgress;
+
+                    // Format number based on whether it's a percentage or whole number
+                    if (target % 1 !== 0) {
+                        element.textContent = current.toFixed(1) + suffix;
+                    } else {
+                        element.textContent = Math.floor(current) + suffix;
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        // Ensure final value is exact
+                        if (target % 1 !== 0) {
+                            element.textContent = target.toFixed(1) + suffix;
+                        } else {
+                            element.textContent = Math.floor(target) + suffix;
+                        }
+                    }
+                }
+
+                updateCounter();
             }
 
-            // Start the animation after 2 seconds, then repeat every 3 seconds
-            setTimeout(() => {
-                switchText();
-                setInterval(switchText, 3000);
-            }, 2000);
-            */
+            // Intersection Observer to trigger animation when section comes into view
+            const evaluationSection = document.querySelector('.evaluation-section');
+            const statNumbers = document.querySelectorAll('.evaluation-stat .stat-number');
+
+            if (evaluationSection && statNumbers.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            statNumbers.forEach((stat, index) => {
+                                setTimeout(() => {
+                                    animateCounter(stat);
+                                }, index * 200); // Stagger animations
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+
+                observer.observe(evaluationSection);
+            }
         });
+
     </script>
 </body>
 </html>
